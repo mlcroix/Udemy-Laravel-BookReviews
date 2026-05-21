@@ -4,7 +4,7 @@ This is a learning project where I follow the instructions of [Laravel & PHP Mas
 This project make use of:
 - PHP: 8.4
 - composer
-- Laravel: 11
+- Laravel: 12
 - Mysql
 - Docker
 
