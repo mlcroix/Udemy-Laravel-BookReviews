@@ -39,6 +39,11 @@ docker exec laravel_bookreview php artisan key:generate
 docker exec laravel_bookreview php artisan make:model {model name} -m
 
 ```
+
+**Create factory**
+```
+docker exec laravel_bookreview php artisan make:factory {name} --model={modelname}
+```
 **Run Migrations**
 ```
 docker exec laravel_bookreview php artisan migrate
