@@ -38,6 +38,12 @@ RUN mkdir -p /var/www/html/storage/framework/{sessions,views,cache,testing} \
     && touch /var/www/html/storage/logs/laravel.log \
     && chmod 664 /var/www/html/storage/logs/laravel.log
 
+# Create application user home
+RUN mkdir -p /home/application \
+    && chown -R 1000:1000 /home/application
+
+ENV HOME=/home/application
+
 EXPOSE 9000
 
 CMD ["php-fpm"]

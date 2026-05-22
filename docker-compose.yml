@@ -7,6 +7,8 @@ services:
       dockerfile: Dockerfile
     container_name: laravel_bookreview
     user: "1000:1000"
+    environment:
+      HOME: /tmp/home
     restart: unless-stopped
     working_dir: /var/www/html
     volumes:
