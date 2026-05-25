@@ -37,6 +37,28 @@ class Book extends Model
         return $query->has('reviews', '>=', $minReviews);
     }
 
+    public function scopePopularLastMonth(Builder $query): Builder|QueryBuilder {
+        return $query->popular(now()->subMonth(), now())
+            ->highestRated(now()->subMonths(), now())
+            ->minReviews(2);
+    }
+
+    public function scopePopularLast6Month(Builder $query): Builder|QueryBuilder {
+        return $query->popular(now()->subMonths(6), now())
+            ->highestRated(now()->subMonths(6), now())
+            ->minReviews(5);
+    }
+
+    public function scopeHighestRatedLastMonth(Builder $query): Builder|QueryBuilder {
+        return $query->highestRated(now()->subMonth(), now())
+            ->minReviews(2);
+    }
+
+    public function scopeHighestRatedLast6Months(Builder $query): Builder|QueryBuilder {
+        return $query->highestRated(now()->subMonths(6), now())
+            ->minReviews(5);
+    }
+
     private function dateRangeFilter(Builder $query, $from, $to): Builder {
         if ($from && !$to) {
             return $query->where('created_at', '>=', $from);
