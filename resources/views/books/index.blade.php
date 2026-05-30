@@ -23,7 +23,7 @@
         @endphp
 
          @foreach ($filters as $key => $label)
-            <a href="{{ route('books.index', [...request()->query(), 'filter' => $key]) }}"
+            <a href="{{ route('books.index', [...request()->query(), 'filter' => $key, 'page' => 1]) }}"
                 class="{{ request('filter') === $key || (request('filter') === null && $key === '') ? 'filter-item-active' : 'filter-item' }}">
                 {{ $label }}
             </a>
@@ -59,6 +59,10 @@
                 </div>
             </li>
         @endempty
+
+        <nav>
+            {{$books->links()}}
+        </nav>
     </ul>
 
 
